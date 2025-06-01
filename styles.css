@@ -1,0 +1,17 @@
+.social-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.social-links li a {
+  text-decoration: none;
+  color: var(--accent-color, #fff);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.social-links li a:hover {
+  color: var(--hover-color, #f39c12);
+}

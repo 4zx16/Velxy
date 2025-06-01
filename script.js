@@ -16,52 +16,37 @@ document.addEventListener('DOMContentLoaded', function() {
   // You can add more stuff here later (theme toggles, modals, etc.)
 });
 
-function fetchGames() {
-  var grid = document.getElementById('game-grid');
-
-  fetch('./games.json')
-    .then(function(res) {
-      if (!res.ok) throw new Error('Failed to fetch games.json: ' + res.status);
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('games.json')
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
       return res.json();
     })
-    .then(function(games) {
+    .then(games => {
+      const grid = document.getElementById('game-grid');
+      grid.innerHTML = ''; // Clear grid before appending
+
       if (!Array.isArray(games) || games.length === 0) {
         grid.innerHTML = '<p>No games found.</p>';
         return;
       }
 
-      var fragment = document.createDocumentFragment();
-
-      games.forEach(function(game) {
-        var card = document.createElement('div');
+      games.forEach(game => {
+        const card = document.createElement('div');
         card.classList.add('game-card');
-
-        var imgHTML = '';
-        if (game.image && game.image !== 'N/A') {
-          imgHTML = '<img src="' + game.image + '" alt="' + game.name + ' Cover">';
-        }
-
-        var linkHTML = '';
-        if (game.link) {
-          linkHTML = '<a href="' + game.link + '" target="_blank" rel="noopener noreferrer" class="btn-small">View Game</a>';
-        }
-
-        card.innerHTML =
-          imgHTML +
-          '<div class="game-content">' +
-          '<h3 class="game-title">' + game.name + '</h3>' +
-          '<p class="game-desc">' + (game.desc || 'No description available.') + '</p>' +
-          linkHTML +
-          '</div>';
-
-        fragment.appendChild(card);
+        card.innerHTML = `
+          ${game.image ? `<img src="${game.image}" alt="${game.name} Cover">` : ''}
+          <div class="game-content">
+            <h3 class="game-title">${game.name}</h3>
+            <p class="game-desc">${game.desc || 'No description available.'}</p>
+            ${game.link ? `<a href="${game.link}" target="_blank" rel="noopener noreferrer" class="btn-small">View Game</a>` : ''}
+          </div>
+        `;
+        grid.appendChild(card);
       });
-
-      grid.innerHTML = '';
-      grid.appendChild(fragment);
     })
-    .catch(function(error) {
-      console.error('Error loading games:', error);
-      grid.innerHTML = '<p>Failed to load games.</p>';
+    .catch(err => {
+      console.error('Could not load games:', err);
+      document.getElementById('game-grid').innerHTML = "<p>Failed to load games. Check your JSON or file path.</p>";
     });
-}
+});

@@ -47,6 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(err => {
       console.error('Could not load games:', err);
-      document.getElementById('game-grid').innerHTML = "<p>Failed to load games. Check your JSON or file path.</p>";
+      document.getElementById('game-grid').innerHTML = "<p>Failed to load games.>";
     });
 });

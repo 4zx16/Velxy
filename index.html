@@ -10,6 +10,162 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<style>
+  :root {
+    --primary-color: #4f46e5;
+    --secondary-color: #22d3ee;
+    --accent-color: #f59e0b;
+    --background-color: #f9fafb;
+    --text-color: #1f2937;
+    --font-family: 'Poppins', sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+    margin-bottom: 0.5em;
+  }
+
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: var(--accent-color);
+  }
+
+  .button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 0.75em 1.5em;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .button:hover {
+    background-color: var(--secondary-color);
+  }
+
+  section {
+    padding: 4em 2em;
+  }
+
+  .info-section {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 2em auto;
+    max-width: 800px;
+  }
+
+  .social-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .social-links li a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 700;
+    background-color: #e0e7ff;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .social-links li a:hover {
+    background-color: #c7d2fe;
+    color: var(--accent-color);
+  }
+
+  #game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .game-card {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+
+  .game-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .game-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .game-card .game-content {
+    padding: 1em;
+  }
+
+  .game-card .game-title {
+    font-size: 1.25em;
+    margin: 0 0 0.5em 0;
+    color: var(--primary-color);
+  }
+
+  .game-card .game-desc {
+    font-size: 0.95em;
+    color: var(--text-color);
+    margin-bottom: 1em;
+  }
+
+  .btn-small {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 0.5em 1em;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-small:hover {
+    background-color: var(--accent-color);
+  }
+
+  @media (max-width: 600px) {
+    section {
+      padding: 2em 1em;
+    }
+
+    .game-card .game-title {
+      font-size: 1.1em;
+    }
+
+    .game-card .game-desc {
+      font-size: 0.9em;
+    }
+  }
+</style>
   <header>
     <div class="logo">Velxy Studios</div>
     <nav>
